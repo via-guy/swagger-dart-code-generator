@@ -339,18 +339,21 @@ class Order {
 
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
 
-  @JsonKey(name: 'id')
+  @JsonKey(name: 'id', includeIfNull: false)
   final num? id;
-  @JsonKey(name: 'petId')
+  @JsonKey(name: 'petId', includeIfNull: false)
   final num? petId;
-  @JsonKey(name: 'quantity')
+  @JsonKey(name: 'quantity', includeIfNull: false)
   final int? quantity;
-  @JsonKey(name: 'shipDate')
+  @JsonKey(name: 'shipDate', includeIfNull: false)
   final DateTime? shipDate;
   @JsonKey(
-      name: 'status', toJson: orderStatusToJson, fromJson: orderStatusFromJson)
+      name: 'status',
+      includeIfNull: false,
+      toJson: orderStatusToJson,
+      fromJson: orderStatusFromJson)
   final enums.OrderStatus? status;
-  @JsonKey(name: 'complete', defaultValue: false)
+  @JsonKey(name: 'complete', includeIfNull: false, defaultValue: false)
   final bool? complete;
   static const fromJsonFactory = _$OrderFromJson;
   static const toJsonFactory = _$OrderToJson;
@@ -419,9 +422,9 @@ class Category {
   factory Category.fromJson(Map<String, dynamic> json) =>
       _$CategoryFromJson(json);
 
-  @JsonKey(name: 'id')
+  @JsonKey(name: 'id', includeIfNull: false)
   final num? id;
-  @JsonKey(name: 'name')
+  @JsonKey(name: 'name', includeIfNull: false, defaultValue: '')
   final String? name;
   static const fromJsonFactory = _$CategoryFromJson;
   static const toJsonFactory = _$CategoryToJson;
@@ -468,21 +471,21 @@ class User {
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
-  @JsonKey(name: 'id')
+  @JsonKey(name: 'id', includeIfNull: false)
   final num? id;
-  @JsonKey(name: 'username')
+  @JsonKey(name: 'username', includeIfNull: false, defaultValue: '')
   final String? username;
-  @JsonKey(name: 'firstName')
+  @JsonKey(name: 'firstName', includeIfNull: false, defaultValue: '')
   final String? firstName;
-  @JsonKey(name: 'lastName')
+  @JsonKey(name: 'lastName', includeIfNull: false, defaultValue: '')
   final String? lastName;
-  @JsonKey(name: 'email')
+  @JsonKey(name: 'email', includeIfNull: false, defaultValue: '')
   final String? email;
-  @JsonKey(name: 'password')
+  @JsonKey(name: 'password', includeIfNull: false, defaultValue: '')
   final String? password;
-  @JsonKey(name: 'phone')
+  @JsonKey(name: 'phone', includeIfNull: false, defaultValue: '')
   final String? phone;
-  @JsonKey(name: 'userStatus')
+  @JsonKey(name: 'userStatus', includeIfNull: false)
   final int? userStatus;
   static const fromJsonFactory = _$UserFromJson;
   static const toJsonFactory = _$UserToJson;
@@ -562,9 +565,9 @@ class Tag {
 
   factory Tag.fromJson(Map<String, dynamic> json) => _$TagFromJson(json);
 
-  @JsonKey(name: 'id')
+  @JsonKey(name: 'id', includeIfNull: false)
   final num? id;
-  @JsonKey(name: 'name')
+  @JsonKey(name: 'name', includeIfNull: false, defaultValue: '')
   final String? name;
   static const fromJsonFactory = _$TagFromJson;
   static const toJsonFactory = _$TagToJson;
@@ -601,25 +604,29 @@ class Pet {
   Pet({
     this.id,
     this.category,
-    required this.name,
-    required this.photoUrls,
+    this.name,
+    this.photoUrls,
     this.tags,
     this.status,
   });
 
   factory Pet.fromJson(Map<String, dynamic> json) => _$PetFromJson(json);
 
-  @JsonKey(name: 'id')
+  @JsonKey(name: 'id', includeIfNull: false)
   final num? id;
-  @JsonKey(name: 'category')
+  @JsonKey(name: 'category', includeIfNull: false)
   final Category? category;
-  @JsonKey(name: 'name')
-  final String name;
-  @JsonKey(name: 'photoUrls', defaultValue: <String>[])
-  final List<String> photoUrls;
-  @JsonKey(name: 'tags', defaultValue: <Tag>[])
+  @JsonKey(name: 'name', includeIfNull: false, defaultValue: '')
+  final String? name;
+  @JsonKey(name: 'photoUrls', includeIfNull: false, defaultValue: <String>[])
+  final List<String>? photoUrls;
+  @JsonKey(name: 'tags', includeIfNull: false, defaultValue: <Tag>[])
   final List<Tag>? tags;
-  @JsonKey(name: 'status', toJson: petStatusToJson, fromJson: petStatusFromJson)
+  @JsonKey(
+      name: 'status',
+      includeIfNull: false,
+      toJson: petStatusToJson,
+      fromJson: petStatusFromJson)
   final enums.PetStatus? status;
   static const fromJsonFactory = _$PetFromJson;
   static const toJsonFactory = _$PetToJson;
@@ -688,11 +695,11 @@ class ApiResponse {
   factory ApiResponse.fromJson(Map<String, dynamic> json) =>
       _$ApiResponseFromJson(json);
 
-  @JsonKey(name: 'code')
+  @JsonKey(name: 'code', includeIfNull: false)
   final int? code;
-  @JsonKey(name: 'type')
+  @JsonKey(name: 'type', includeIfNull: false, defaultValue: '')
   final String? type;
-  @JsonKey(name: 'message')
+  @JsonKey(name: 'message', includeIfNull: false, defaultValue: '')
   final String? message;
   static const fromJsonFactory = _$ApiResponseFromJson;
   static const toJsonFactory = _$ApiResponseToJson;

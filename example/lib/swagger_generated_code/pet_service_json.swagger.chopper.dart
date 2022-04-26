@@ -1,4 +1,4 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+//Generated code
 
 part of 'pet_service_json.swagger.dart';
 
